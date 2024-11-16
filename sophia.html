@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>카카오톡 한국어 문장 교정기</title>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function checkSentence() {
+            var sentence = $('#sentence').val();
+            $.ajax({
+                url: 'check',
+                type: 'POST', 
+                data: {sentence: sentence},
+                success: function(result) {
+                    $('#result').text(result);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>카카오톡 한국어 문장 교정기</h1>
+    <p>한국어 문장을 입력하세요:</p>
+    <textarea id="sentence" rows="5" cols="50"></textarea><br>
+    <button onclick="checkSentence()">교정하기</button>
+    <p>교정 결과:</p>
+    <div id="result"></div>
+</body>
+</html>
